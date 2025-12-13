@@ -130,3 +130,13 @@ Feature: Build Verification Test for Automation Exercise
       And subo un archivo de prueba
       And hago click en Submit
       Then deberia ver el mensaje de exito "Success! Your details have been submitted successfully."
+
+      @maximize_window
+    Scenario: TC18 - Realizar compra completa (Checkout)
+      Given el usuario ha iniciado sesion con "qa_valid_user@test.com" y "123456"
+      And el usuario tiene productos en el carrito
+      When hago click en el botón "Proceed To Checkout"
+      And hago click en el botón "Place Order"
+      And ingreso los datos de tarjeta "4100 0000 0000 0000", CVC "123" y expiracion "01" / "2030"
+      And hago click en el botón "Pay and Confirm Order"
+      Then deberia ver el mensaje de exito "Congratulations! Your order has been confirmed!"

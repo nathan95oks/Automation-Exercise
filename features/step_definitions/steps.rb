@@ -11,7 +11,6 @@ Given('el usuario navega a la pagina de {string}') do |pagina|
   find(links[pagina]).click
 end
 
-
 Then('el titulo de la pagina debe ser {string}') do |titulo_esperado|
   expect(page).to have_title titulo_esperado
 end
@@ -23,7 +22,6 @@ end
 When('hago click en el enlace {string}') do |link_text|
   click_link link_text
 end
-
 
 When(/^hago click en el bot[óo]n "([^"]*)"$/) do |btn_text|
   if page.has_link?(btn_text)
@@ -181,4 +179,12 @@ end
 
 Then('deberia ver el mensaje de exito {string}') do |msg|
   expect(page).to have_content(msg)
+end
+
+When('ingreso los datos de tarjeta {string}, CVC {string} y expiracion {string} \/ {string}') do |card, cvc, month, year|
+  find("input[name='name_on_card']").set("QA Tester")
+  find("input[name='card_number']").set(card)
+  find("input[name='cvc']").set(cvc)
+  find("input[name='expiry_month']").set(month)
+  find("input[name='expiry_year']").set(year)
 end
