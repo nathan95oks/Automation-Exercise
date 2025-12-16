@@ -140,3 +140,35 @@ Feature: Build Verification Test for Automation Exercise
       And ingreso los datos de tarjeta "4100 0000 0000 0000", CVC "123" y expiracion "01" / "2030"
       And hago click en el botón "Pay and Confirm Order"
       Then deberia ver el mensaje de exito "Congratulations! Your order has been confirmed!"
+
+      @maximize_window 
+    Scenario: TC19 - Flujo E2E: Buscar, Agregar y Verificar persistencia tras Login
+
+      Given el usuario navega a la pagina de "Products"
+      When busco el producto "Winter Top"
+      And paso el mouse sobre el primer producto y hago click en 'Add to cart'
+      And hago click en el botón "Continue Shopping"
+      
+      And hago click en el enlace "Signup / Login"
+      And ingreso el email "qa_valid_user@test.com" y password "123456"
+      And hago click en el boton login
+      
+      And hago click en el enlace "Cart"
+      Then el carrito de compras deberia tener "1" producto
+
+
+
+      @maximize_window @math_check 
+    Scenario: TC20 - Validacion Matematica: Precios y Subtotales en el Carrito
+      Given el usuario navega a la pagina de "Products"
+
+      When busco el producto "Blue Top"
+      And paso el mouse sobre el primer producto y hago click en 'Add to cart'
+      And hago click en el botón "Continue Shopping"
+ 
+      And busco el producto "Men Tshirt"
+      And paso el mouse sobre el primer producto y hago click en 'Add to cart'
+      And hago click en el botón "Continue Shopping"
+
+      And hago click en el enlace "Cart"
+      Then verifico que el subtotal de cada producto sea matematicamente correcto
