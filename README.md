@@ -43,7 +43,7 @@ Si el sitio ha eliminado los datos, registre manualmente este usuario antes de e
 
 ## Estructura del Proyecto
 
-*   **features/**: Contiene el archivo `.feature` con los 23 escenarios BDD.
+*   **features/**: Contiene el archivo `.feature` con los 24 escenarios BDD.
 *   **features/step_definitions/**: Contiene `steps.rb` con la logica de automatizacion.
 *   **features/support/**: Configuracion del driver (env.rb) y hooks.
 *   **.gitignore**: Archivos excluidos del control de versiones.
