@@ -6,6 +6,7 @@ Capybara.register_driver :chrome do |app|
   options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument('--start-maximized') 
   options.add_argument('--disable-notifications')
+  options.add_argument('--headless=new') 
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 

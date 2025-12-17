@@ -188,3 +188,37 @@ When('ingreso los datos de tarjeta {string}, CVC {string} y expiracion {string} 
   find("input[name='expiry_month']").set(month)
   find("input[name='expiry_year']").set(year)
 end
+
+Then('verifico que el subtotal de cada producto sea matematicamente correcto') do
+  filas = all("tbody tr")
+  
+  filas.each do |fila|
+    precio_texto = fila.find(".cart_price").text
+    precio = precio_texto.gsub(/\D/, '').to_i 
+    
+    cantidad_texto = fila.find(".cart_quantity button").text
+    cantidad = cantidad_texto.to_i
+    
+    total_mostrado_texto = fila.find(".cart_total_price").text
+    total_mostrado = total_mostrado_texto.gsub(/\D/, '').to_i
+    
+    calculo_real = precio * cantidad
+    
+    puts "Validando: #{precio} x #{cantidad} = #{calculo_real} (Web muestra: #{total_mostrado})"
+    
+    expect(total_mostrado).to eq(calculo_real)
+  end
+end
+
+When('agrego todos los productos visibles al carrito') do
+  products = all(".single-products")
+  
+  products.each_with_index do |product, index|
+    current_product = all(".single-products")[index]
+    
+    current_product.hover
+    current_product.find(".add-to-cart", match: :first, visible: true).click
+    
+    find("button.close-modal", wait: 5).click
+  end
+end
