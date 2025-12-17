@@ -171,6 +171,7 @@ Feature: Build Verification Test for Automation Exercise
       And hago click en el botón "Continue Shopping"
 
       And hago click en el enlace "Cart"
+<<<<<<< HEAD
       Then verifico que el subtotal de cada producto sea matematicamente correcto
 
     @tc21
@@ -202,3 +203,6 @@ Feature: Build Verification Test for Automation Exercise
 
 
         
+=======
+      Then verifico que el subtotal de cada producto sea matematicamente correcto
+>>>>>>> fe0fcdb996eee7f0c3197f1d026b71eec8988565
