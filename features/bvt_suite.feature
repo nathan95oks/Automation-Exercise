@@ -173,11 +173,13 @@ Feature: Build Verification Test for Automation Exercise
       And hago click en el enlace "Cart"
       Then verifico que el subtotal de cada producto sea matematicamente correcto
 
-    
+    @tc21
     Scenario: TC21 - Verificar agregar todos los productos visibles al carrito 
       Given el usuario navega a la pagina de "Products"
       When agrego todos los productos visibles al carrito
       Then el carrito de compras deberia tener "34" producto
+      When elimino todos los productos del carrito
+      Then el producto deberia desaparecer del carrito
 
 
 

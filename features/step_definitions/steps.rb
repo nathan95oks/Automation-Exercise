@@ -222,3 +222,13 @@ When('agrego todos los productos visibles al carrito') do
     find("button.close-modal", wait: 5).click
   end
 end
+
+When('elimino todos los productos del carrito') do
+  visit '/view_cart'
+  # Loop while there is at least one delete button
+  while page.has_css?(".cart_quantity_delete", wait: 2)
+    find(".cart_quantity_delete", match: :first).click
+    # Wait briefly for the row to be removed to avoid stale element errors or clicking the same row
+    sleep 0.1 
+  end
+end
